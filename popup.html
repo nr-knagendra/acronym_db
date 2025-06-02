@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acronym Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            width: 400px;
+            height: 500px;
+            overflow: hidden; /* Important: body itself won't scroll */
+            display: flex;
+            flex-direction: column;
+        }
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-cyber-dark text-cyber-light-gray">
+    <div id="stickyHeaderSection">
+        <header id="mainHeader" class="bg-cyber-gradient-header text-white shadow-cyber-glow">
+            <h1 class="font-orbitron font-bold text-center text-cyber-cyan tracking-wider">ACRONYM.DB</h1>
+        </header>
+        <div id="searchContainer" class="bg-cyber-dark-secondary/80 backdrop-blur-md">
+            <input type="text" id="searchInput" placeholder="Scan for acronyms..."
+                   class="w-full bg-cyber-dark-tertiary border border-cyber-accent-blue text-cyber-light-gray rounded-md shadow-sm focus:ring-1 focus:ring-cyber-pink focus:border-cyber-pink transition-all duration-150 ease-in-out placeholder-cyber-gray">
+        </div>
+    </div>
+
+    <div id="resultsAreaWrapper" class="flex-grow overflow-hidden"> <div id="resultsArea" class="h-full overflow-y-auto custom-scrollbar">
+            </div>
+    </div>
+
+    <footer id="mainFooter" class="bg-cyber-dark-tertiary text-cyber-gray text-center border-t border-cyber-accent-blue/50">
+        <p><span id="resultsCount" class="font-bold text-cyber-cyan">0</span> nodes synced.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html>

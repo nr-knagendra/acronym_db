@@ -1,0 +1,261 @@
+/* styles.css */
+:root {
+    --cyber-dark: #080a12;
+    --cyber-dark-secondary: #101420;
+    --cyber-dark-tertiary: #181c2c;
+    --cyber-results-bg: #0c0e1a;
+    --cyber-tile-bg: rgba(20, 24, 40, 0.85);
+    --cyber-tile-bg-hover: rgba(28, 33, 50, 0.95);
+    --cyber-light-gray: #d8e0fc;
+    --cyber-gray: #9098b0;
+    --cyber-cyan: #00f0ff;
+    --cyber-pink: #ff00cc;
+    --cyber-green: #00ffaa;
+    --cyber-accent-blue: #5070f0;
+    --cyber-border-color: rgba(80, 112, 240, 0.25);
+    --cyber-glow-color: rgba(0, 240, 255, 0.5);
+}
+
+/* Universal Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cyber-dark);
+    color: var(--cyber-light-gray);
+    border: 1px solid var(--cyber-border-color);
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3), 0 0 15px var(--cyber-accent-blue_alpha, rgba(80,112,240,0.15));
+}
+
+/* Sticky Header & Search Section */
+#stickyHeaderSection {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: var(--cyber-dark-secondary); /* Add solid background to the sticky container */
+    /* This background will prevent scrolling items from showing through transparent parts of header/search */
+}
+
+#mainHeader {
+    padding: 10px 15px;
+    /* background-color is part of bg-cyber-gradient-header (Tailwind) which is a gradient */
+    /* text color from Tailwind */
+}
+#mainHeader h1 {
+    font-size: 1.3rem;
+    text-shadow: 0 0 4px var(--cyber-glow-color);
+    /* other font properties from Tailwind */
+}
+
+#searchContainer {
+    padding: 10px 12px;
+    /* The Tailwind class bg-cyber-dark-secondary/80 sets a semi-transparent background */
+    /* backdrop-blur-md is also a Tailwind class */
+    /* If backdrop-blur isn't enough, we might need a slightly more opaque bg here or rely on #stickyHeaderSection's bg */
+    background-color: rgba(16, 20, 32, 0.9); /* Increased opacity slightly */
+    border-bottom: 1px solid var(--cyber-border-color);
+}
+#searchInput {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border-radius: 5px;
+    caret-color: var(--cyber-pink);
+    transition: all 0.2s ease-in-out;
+    background-color: var(--cyber-dark-tertiary);
+    border: 1px solid var(--cyber-accent-blue);
+    color: var(--cyber-light-gray);
+}
+#searchInput::placeholder {
+    color: var(--cyber-gray);
+    opacity: 0.7;
+}
+#searchInput:focus {
+    box-shadow: 0 0 0 2px var(--cyber-pink_alpha, rgba(255,0,204,0.4));
+    border-color: var(--cyber-pink);
+}
+
+/* Scrollable Results Area Wrapper & Actual Results Area */
+#resultsAreaWrapper {
+    background-color: var(--cyber-results-bg);
+}
+
+#resultsArea {
+    padding: 12px;
+    background-color: var(--cyber-results-bg);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+    margin: 2px 0;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--cyber-accent-blue);
+    border-radius: 4px;
+    border: 2px solid var(--cyber-results-bg);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-pink);
+}
+.custom-scrollbar { /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyber-accent-blue) var(--cyber-results-bg);
+}
+
+/* Result Item Styling */
+.result-item {
+    background: linear-gradient(145deg, var(--cyber-tile-bg), rgba(30,35,60,0.9));
+    border: 1px solid var(--cyber-border-color);
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background 0.2s ease-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 0 2px var(--cyber-accent-blue_alpha, rgba(80,112,240,0.1));
+    position: relative;
+    overflow: hidden;
+}
+.result-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-item:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 4px 10px rgba(0,0,0, 0.35), 0 0 10px var(--cyber-pink), 0 0 6px var(--cyber-glow-color);
+    background: linear-gradient(145deg, var(--cyber-tile-bg-hover), rgba(35,40,70,0.98));
+    border-color: var(--cyber-pink);
+}
+
+.result-item h3 {
+    color: var(--cyber-cyan);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 600;
+    text-shadow: 0 0 2px var(--cyber-cyan);
+}
+
+.result-item .context-tag {
+    display: inline-block;
+    background-color: var(--cyber-accent-blue);
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    margin-bottom: 7px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.result-item .explanation {
+    color: var(--cyber-light-gray);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    line-height: 1.45;
+}
+
+.result-item .details-section {
+    background-color: rgba(8, 10, 18, 0.75);
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--cyber-green);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.15);
+}
+
+.result-item .details-section strong {
+    color: var(--cyber-green);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.result-item .details-section p {
+    color: var(--cyber-gray);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.result-item .link-container {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.result-item .link-container a {
+    color: var(--cyber-pink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.result-item .link-container a:hover {
+    color: var(--cyber-cyan);
+    text-shadow: 0 0 4px var(--cyber-cyan);
+}
+
+.result-item .link-container a svg {
+    width: 0.9em;
+    height: 0.9em;
+    margin-left: 5px;
+    transition: transform 0.2s ease-out;
+    fill: currentColor;
+}
+.result-item .link-container a:hover svg {
+    transform: translateX(3px) scale(1.05);
+}
+
+/* Highlight style */
+.highlight {
+    background-color: var(--cyber-pink);
+    color: var(--cyber-dark) !important;
+    padding: 1px 3px;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 0 4px var(--cyber-pink);
+}
+
+/* Initial/No Results Message */
+#initialMessage, .empty-message {
+    text-align: center;
+    margin: 1rem auto;
+    color: var(--cyber-gray);
+    font-size: 0.85rem;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--cyber-tile-bg);
+    border-radius: 6px;
+    border: 1px dashed var(--cyber-accent-blue);
+    max-width: 90%;
+}
+
+/* Footer */
+#mainFooter {
+    padding: 8px 12px;
+    background-color: var(--cyber-dark-secondary);
+    border-top: 1px solid var(--cyber-border-color);
+}
+#mainFooter p {
+    font-size: 0.7rem;
+    margin: 0;
+}
+
