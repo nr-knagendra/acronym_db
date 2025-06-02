@@ -18,21 +18,21 @@ This extension is ideal for teams or individuals who frequently encounter specif
 
 ## Folder Structure
 
-
+```text
 acronym-search-extension/
 ├── css/
-│   └── styles.css        # Custom CSS for styling the popup
+│   └── styles.css    # Custom CSS for styling the popup
 ├── js/
-│   ├── data.js           # Contains the array of acronym objects
-│   └── popup.js          # JavaScript logic for search and UI rendering
-├── images/               # Extension icons
+│   ├── data.js       # Contains the array of acronym objects
+│   └── popup.js      # JavaScript logic for search and UI rendering
+├── images/
 │   ├── icon16.png
 │   ├── icon48.png
 │   └── icon128.png
-├── manifest.json         # Chrome extension manifest file
-└── popup.html            # HTML structure for the extension's popup
-└── README.md             # This file
-
+├── manifest.json     # Chrome extension manifest file
+├── popup.html        # HTML structure for the extension's popup
+└── README.md         # This file
+```
 
 ## Setup and Installation
 
