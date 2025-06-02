@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (acronymData.length === 0) {
             resultsArea.innerHTML = `<p id="initialMessage">No acronyms loaded. Please check your data.js file.</p>`;
         } else {
-            resultsArea.innerHTML = `<p id="initialMessage">Search your acronyms... System Online</p>`;
+            resultsArea.innerHTML = `<p id="initialMessage">Cyber-search your acronyms... System Online.</p>`;
         }
         resultsCount.textContent = acronymData.length;
     };

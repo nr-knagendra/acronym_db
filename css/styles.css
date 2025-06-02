@@ -28,15 +28,18 @@ body {
     border: 1px solid var(--cyber-border-color);
     border-radius: 8px;
     box-shadow: 0 0 25px rgba(0,0,0,0.3), 0 0 15px var(--cyber-accent-blue_alpha, rgba(80,112,240,0.15));
+    /* height, width, display:flex, flex-direction: column, overflow:hidden are set in popup.html inline style */
+    /* The body itself is the main flex container */
 }
 
 /* Sticky Header & Search Section */
 #stickyHeaderSection {
-    position: sticky;
+    position: sticky; /* This makes it sticky within the body flex container */
     top: 0;
     z-index: 100;
     width: 100%;
     background-color: var(--cyber-dark-secondary);
+    flex-shrink: 0; /* Prevent this section from shrinking */
 }
 
 #mainHeader {
@@ -75,12 +78,20 @@ body {
 
 /* Scrollable Results Area Wrapper & Actual Results Area */
 #resultsAreaWrapper {
+    flex-grow: 1; /* Explicitly set flex-grow here */
     background-color: var(--cyber-results-bg);
+    overflow: hidden; /* Keep overflow hidden on the wrapper */
+    display: flex; /* Make it a flex container for its child */
+    flex-direction: column; /* Stack child vertically */
+    min-height: 0; /* Crucial for flex-grow in a flex column with scrollable child */
 }
 
 #resultsArea {
+    flex-grow: 1; /* Allow #resultsArea to grow within its wrapper */
     padding: 12px;
     background-color: var(--cyber-results-bg);
+    overflow-y: auto; /* Scrolling happens here */
+    /* The Tailwind h-full class in popup.html might be redundant now or could be removed */
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -104,7 +115,7 @@ body {
     scrollbar-color: var(--cyber-accent-blue) var(--cyber-results-bg);
 }
 
-/* Result Item Styling */
+/* Result Item Styling (remains the same) */
 .result-item {
     background: linear-gradient(145deg, var(--cyber-tile-bg), rgba(30,35,60,0.9));
     border: 1px solid var(--cyber-border-color);
@@ -246,6 +257,7 @@ body {
     padding: 6px 12px;
     background-color: var(--cyber-dark-secondary);
     border-top: 1px solid var(--cyber-border-color);
+    flex-shrink: 0; /* Prevent this section from shrinking */
 }
 
 #mainFooter .footer-content {
@@ -266,7 +278,7 @@ body {
     color: var(--cyber-gray);
     text-decoration: none;
     transition: color 0.2s ease, text-shadow 0.2s ease;
-    font-size: 0.7rem; /* This font-size will be inherited by the SVG if em is used */
+    font-size: 0.7rem;
 }
 
 #mainFooter .github-link:hover {
@@ -275,14 +287,14 @@ body {
 }
 
 #mainFooter .github-link .github-icon {
-    width: 1.2em;  /* Adjusted: 1.2 times the font-size of the parent (.github-link) */
-    height: 1.2em; /* Adjusted: 1.2 times the font-size of the parent (.github-link) */
+    width: 1.2em;
+    height: 1.2em;
     fill: currentColor;
     margin-right: 4px;
-    vertical-align: middle; /* Helps align SVG with text better */
+    vertical-align: middle;
 }
 #mainFooter .github-link span {
     display: inline-block;
-    vertical-align: middle; /* Helps align text with SVG */
+    vertical-align: middle;
 }
 
