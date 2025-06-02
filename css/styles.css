@@ -36,27 +36,20 @@ body {
     top: 0;
     z-index: 100;
     width: 100%;
-    background-color: var(--cyber-dark-secondary); /* Add solid background to the sticky container */
-    /* This background will prevent scrolling items from showing through transparent parts of header/search */
+    background-color: var(--cyber-dark-secondary);
 }
 
 #mainHeader {
     padding: 10px 15px;
-    /* background-color is part of bg-cyber-gradient-header (Tailwind) which is a gradient */
-    /* text color from Tailwind */
 }
 #mainHeader h1 {
     font-size: 1.3rem;
     text-shadow: 0 0 4px var(--cyber-glow-color);
-    /* other font properties from Tailwind */
 }
 
 #searchContainer {
     padding: 10px 12px;
-    /* The Tailwind class bg-cyber-dark-secondary/80 sets a semi-transparent background */
-    /* backdrop-blur-md is also a Tailwind class */
-    /* If backdrop-blur isn't enough, we might need a slightly more opaque bg here or rely on #stickyHeaderSection's bg */
-    background-color: rgba(16, 20, 32, 0.9); /* Increased opacity slightly */
+    background-color: rgba(16, 20, 32, 0.9);
     border-bottom: 1px solid var(--cyber-border-color);
 }
 #searchInput {
@@ -250,12 +243,46 @@ body {
 
 /* Footer */
 #mainFooter {
-    padding: 8px 12px;
+    padding: 6px 12px;
     background-color: var(--cyber-dark-secondary);
     border-top: 1px solid var(--cyber-border-color);
 }
+
+#mainFooter .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #mainFooter p {
     font-size: 0.7rem;
     margin: 0;
+    line-height: 1.4;
+}
+
+#mainFooter .github-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--cyber-gray);
+    text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    font-size: 0.7rem; /* This font-size will be inherited by the SVG if em is used */
+}
+
+#mainFooter .github-link:hover {
+    color: var(--cyber-cyan);
+    text-shadow: 0 0 3px var(--cyber-cyan);
+}
+
+#mainFooter .github-link .github-icon {
+    width: 1.2em;  /* Adjusted: 1.2 times the font-size of the parent (.github-link) */
+    height: 1.2em; /* Adjusted: 1.2 times the font-size of the parent (.github-link) */
+    fill: currentColor;
+    margin-right: 4px;
+    vertical-align: middle; /* Helps align SVG with text better */
+}
+#mainFooter .github-link span {
+    display: inline-block;
+    vertical-align: middle; /* Helps align text with SVG */
 }
 
